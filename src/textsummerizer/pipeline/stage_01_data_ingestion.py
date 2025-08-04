@@ -1,4 +1,4 @@
-from textsummerizer.config.configuration import ConfiggurationManager
+from textsummerizer.config.configuration import ConfigurationManager
 from textsummerizer.components.data_ingestion import DataIngestion
 from textsummerizer.logging import logger
 
@@ -7,7 +7,7 @@ class DataIngestionTrainingPipeline:
         pass
 
     def main(self):
-        config=ConfiggurationManager()
+        config=ConfigurationManager()
         data_ingestion_config = config.get_data_ingestion_config()
         data_ingestion = DataIngestion(config=data_ingestion_config)
         data_ingestion.download_file()

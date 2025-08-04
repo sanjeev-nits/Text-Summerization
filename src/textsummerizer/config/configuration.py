@@ -1,8 +1,8 @@
 from textsummerizer.constants import *
 from textsummerizer.utils.common import read_yaml, create_directories
-from textsummerizer.entity import DataIngestionConfig
+from textsummerizer.entity import DataIngestionConfig,DataValidationConfig
 
-class ConfiggurationManager:
+class ConfigurationManager:
     def __init__(self,
             config_filepath=CONFIG_FILE_PATH,
             params_filepath=PARAMS_FILE_PATH):
@@ -24,3 +24,15 @@ class ConfiggurationManager:
         )
 
         return data_ingestion_config
+    
+    def get_data_validation_config(self) -> DataValidationConfig:
+        config = self.config.data_validation
+        params = self.params.data_validation
+
+        data_validation_config = DataValidationConfig(
+            root_dir=Path(config.root_dir),
+            STATUS_FILE=config.STATUS_FILE,
+            ALL_REQUIRED_FILES=params.all_required_files
+        )
+
+        return data_validation_config

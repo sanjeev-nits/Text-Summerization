@@ -1,1 +1,2 @@
-key: value
+data_validation:
+  all_required_files: ["train", "test", "validation"]
