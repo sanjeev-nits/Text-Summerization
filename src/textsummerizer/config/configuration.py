@@ -1,6 +1,6 @@
 from textsummerizer.constants import *
 from textsummerizer.utils.common import read_yaml, create_directories
-from textsummerizer.entity import DataIngestionConfig,DataValidationConfig
+from textsummerizer.entity import DataIngestionConfig,DataValidationConfig,DataTransformationConfig
 
 class ConfigurationManager:
     def __init__(self,
@@ -36,3 +36,15 @@ class ConfigurationManager:
         )
 
         return data_validation_config
+    
+
+    def get_data_transformation_config(self) -> DataTransformationConfig:
+        config = self.config.data_transformation
+        create_directories([config.root_dir])
+
+        data_transformation_config = DataTransformationConfig(
+            root_dir=Path(config.root_dir),
+            data_path=Path(config.data_path),
+            tokenizer_name=config.tokenizer_name
+        )
+        return data_transformation_config
