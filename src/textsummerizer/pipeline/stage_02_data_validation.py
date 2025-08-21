@@ -1,6 +1,6 @@
 from textsummerizer.config.configuration import ConfigurationManager
 from textsummerizer.components.data_validation import DataValiadtion
-from textsummerizer.logging import logger
+
 
 class DataValidationTrainingPipeline:
     def __init__(self):

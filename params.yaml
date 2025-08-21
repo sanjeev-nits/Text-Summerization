@@ -1,2 +1,15 @@
 data_validation:
   all_required_files: ["train", "test", "validation"]
+
+TrainingArguments:
+  num_train_epochs: 3
+  warmup_steps: 500
+  weight_decay: 0.01
+  per_device_train_batch_size : 4
+  per_device_eval_batch_size : 4
+  logging_steps: 1
+  eval_strategy: steps 
+  eval_steps: 0.5
+  save_steps: 1000000
+  gradient_accumulation_steps: 16
+
