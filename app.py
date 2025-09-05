@@ -88,4 +88,4 @@ if st.button("🚀 Summarize"):
 # Footer
 # ------------------------------
 st.markdown("---")
-st.caption("🚀 Powered by Hugging Face & Streamlit")
+st.caption("created by SanjeevNits")
