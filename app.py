@@ -6,7 +6,6 @@ load_dotenv()
 import streamlit as st
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 import torch
-import time
 
 st.set_page_config(page_title="Text Summarization App", layout="wide")
 
@@ -41,6 +40,13 @@ if uploaded_file is not None:
     input_text = uploaded_file.read().decode("utf-8")
 
 # ------------------------------
+# Summary Length Control
+# ------------------------------
+st.markdown("### ⚙️ Summary Settings")
+summary_length = st.slider("📏 Select maximum summary length (tokens)", 50, 400, 150)
+min_summary_length = int(summary_length * 0.5)
+
+# ------------------------------
 # Summarization
 # ------------------------------
 summary = ""
@@ -62,12 +68,12 @@ if st.button("🚀 Summarize"):
             # Generate summary
             summary_ids = model.generate(
                 **inputs,
-                max_length=128,
-                min_length=20,
+                max_length=summary_length,
+                min_length=min_summary_length,
                 num_beams=5,
                 no_repeat_ngram_size=3,
                 repetition_penalty=2.0,
-                length_penalty=1.0,
+                length_penalty=0.8,  # <1.0 = longer summaries
                 early_stopping=True
             )
 
