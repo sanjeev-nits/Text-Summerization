@@ -2,7 +2,7 @@ from textsummerizer.pipeline.stage_01_data_ingestion import DataIngestionTrainin
 from textsummerizer.logging import logger
 from textsummerizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
 from textsummerizer.pipeline.stage_03_data_transformation import DataTransformationTrainingPipeline
-from textsummerizer.pipeline.stage_04_model_trainer import ModelTrainerTrainingPipeline
+
 
 STAGE_NAME = "Data Ingestion stage"
 
@@ -39,13 +39,4 @@ except Exception as e:
     raise e
 
 
-STAGE_NAME = "Model Trainer stage"
 
-try:
-    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
-    Model_Trainer = ModelTrainerTrainingPipeline()
-    Model_Trainer.main()
-    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<")
-except Exception as e:
-    logger.exception(f">>>>>> stage {STAGE_NAME} failed <<<<<<")
-    raise e

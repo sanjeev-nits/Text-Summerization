@@ -73,7 +73,7 @@ if st.button("🚀 Summarize"):
                 num_beams=5,
                 no_repeat_ngram_size=3,
                 repetition_penalty=2.0,
-                length_penalty=0.8,  # <1.0 = longer summaries
+                length_penalty=0.8, 
                 early_stopping=True
             )
 
